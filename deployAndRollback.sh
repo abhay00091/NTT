@@ -21,8 +21,6 @@ case $num in
 		export BRel_dir=/usr/local/project/release_v$BNumner
 		export Bak_number=`expr $BNumner - 1`
 
-		#check the number of orguments
-		if [ "$#" -eq 1 ]; then
 		#Create the Release directory on build Server
 	        mkdir -p $BRel_dir
 
@@ -55,15 +53,10 @@ EOF
 		cat sample_v$BNumner.tar.gz | ssh $deploy_server "tar xzf - -C ${Dapp_Dir}/"
 		echo "Deployment is completed, please check the application console"
 		echo "Thank you !!"
-		else
-		echo "arguments are not equal to 1"
-		fi
-
 	;;
 	2)
 		export BNumner=`expr $(wc -l count.file | awk '{print $1}') - 1`
 		echo "$BNumner"
-		if [ "$#" -eq 1 ]; then
 		echo "rolling back to previous build.."
 
 		cd $Bkp_dir
@@ -77,15 +70,11 @@ EOF
 		cat sample_v$BNumner.tar.gz | ssh $deploy_server "tar xzf - -C /"
                 echo "Rollback is completed, please check the application console"
                 echo "Thank you !!"
-
-		else
-		echo "arguments are not equal to 1"
-		fi
 	;;
 	*)
-		echo "enter correct"
+		echo "Please enter the correct number !!"
 	;;
 esac
 else
-  echo "arguments are not equal to 1"
+  echo "Number of entered arguments are not equal to 1"
 fi
