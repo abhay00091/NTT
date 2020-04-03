@@ -25,6 +25,7 @@ It will ask  -press 1 for deployment and 2 for rollback
 1.3.It will clean the application directory on deployment server and will deploy the application into 
 deployment server (/usr/local/myApp location).
 
+
 2. Rollback
 2.1 Script will clean the appliction directory on deployment server (/usr/local/myApp location). 
 2.2 It will deploy the previous build from backup directory /usr/local/backup.
