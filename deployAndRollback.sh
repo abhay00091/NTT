@@ -32,7 +32,7 @@ case $num in
 	        cp ${PWD}/src/* $BRel_dir
 	        cd $BRel_dir
 		#Create the tar.gz file and copy in into deownload directory
-		tar czf $BDow_dir/sample_v$BNumner.tar.gz *.txt
+		tar czf $BDow_dir/sample_v$BNumner.tar.gz *
 
 		#Create a backup directory
 
@@ -44,7 +44,8 @@ case $num in
 
 		#Connect to Deployment server and clean the application directory
 		sftp ${deploy_server} <<EOF
-		rm ${Dapp_Dir}/*
+		cd ${Dapp_Dir}
+		rm *
 EOF
 		cd $BDow_dir
 
